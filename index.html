@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA Organic - Store Preview</title>
+    <style>
+        /* DIGITAL HEROES STANDARDS APPLIED:
+          - 60% Primary Color: #F9F7F2 (Cream backgrounds)
+          - 30% Secondary Color: #2D4033 (Deep Forest Green text & headers)
+          - 10% Accent Color: #D4A373 (Muted Gold for CTAs)
+          - Typography: Serif for Headings, Sans-Serif for Body
+        */
+        
+        :root {
+            --primary-bg: #F9F7F2;
+            --secondary-color: #2D4033;
+            --accent-color: #D4A373;
+            --text-dark: #1a261e;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Header / Nav */
+        header {
+            background-color: var(--primary-bg);
+            border-bottom: 1px solid rgba(45, 64, 51, 0.1);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            margin-left: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Hero Banner */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(rgba(45, 64, 51, 0.2), rgba(45, 64, 51, 0.4)), 
+                        url('https://images.unsplash.com/photo-1556228578-0d85b1a4d571?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .cta-btn {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 15px 35px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Featured Collections (Product Grid) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid rgba(45, 64, 51, 0.05);
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #f1efeb;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .compare-price {
+            text-decoration: line-through;
+            color: #888;
+            font-weight: normal;
+            margin-right: 5px;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            width: 100%;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        /* USP / Benefits Section */
+        .benefits {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            max-width: 100%;
+        }
+
+        .benefits h2 {
+            color: var(--white);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .benefit-item h3 {
+            color: var(--accent-color);
+            margin: 15px 0 10px 0;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 30px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 50px 5% 20px 5%;
+            font-size: 0.9rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 30px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            header { flex-direction: column; gap: 15px; }
+            nav a { margin: 0 10px; }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="announcement-bar">
+        Free Shipping on orders over $50 | Use code: GLOW10
+    </div>
+
+    <header>
+        <div class="logo">LUMINA</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Shop All</a>
+            <a href="#">Our Story</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Nature’s Science, Bottled.</h1>
+        <p>Premium botanical skincare designed to unlock your skin's natural radiance without compromising on quality.</p>
+        <a href="#shop" class="cta-btn">Shop the Collection</a>
+    </div>
+
+    <section id="shop">
+        <div class="section-header">
+            <h2>Best-Selling Products</h2>
+            <p>Our top-performing clinical formulas.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80'); background-size: cover;"></div>
+                <h3>Glow Vitamin C Serum</h3>
+                <div class="price"><span class="compare-price">$65.00</span> $48.00</div>
+                <button class="add-to-cart-btn" onclick="alert('Added to cart!')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=400&q=80'); background-size: cover;"></div>
+                <h3>Midnight Recovery Oil</h3>
+                <div class="price">$52.00</div>
+                <button class="add-to-cart-btn" onclick="alert('Added to cart!')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?auto=format&fit=crop&w=400&q=80'); background-size: cover;"></div>
+                <h3>Botanical Hydrating Mist</h3>
+                <div class="price">$29.00</div>
+                <button class="add-to-cart-btn" onclick="alert('Added to cart!')">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits">
+        <div class="section-header">
+            <h2>Why Choose Lumina</h2>
+            <p style="color: rgba(255,255,255,0.8)">We believe in skin health without compromise.</p>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <h3>100% Organic</h3>
+                <p>Formulated with pure, plant-based ingredients sourced directly from ethical farms.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Dermatologist Tested</h3>
+                <p>Safe for all skin types. Rigorously tested to prevent irritation and ensure efficacy.</p>
+            </div>
+            <div class="benefit-item">
+                <h3>Cruelty Free</h3>
+                <p>We are proudly Leaping Bunny certified. Never tested on animals, ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-header">
+            <h2>What Our Community Says</h2>
+            <p>Real results from real people.</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"The Glow Serum cleared my hyperpigmentation in just three weeks. I'm completely obsessed and will definitely be reordering!"</p>
+                <br>
+                <strong>- Sarah K.</strong>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"I have highly sensitive skin and have struggled to find a night oil that doesn't cause breakouts. The Midnight Recovery Oil is a miracle worker."</p>
+                <br>
+                <strong>- Jessica M.</strong>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>LUMINA Organic</h4>
+                <p>Elevated skincare powered by nature's finest botanicals.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Skincare Bundles</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Care</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 LUMINA Organic. Designed for Digital Heroes Shopify Training.
+        </div>
+    </footer>
+
+</body>
+</html>
